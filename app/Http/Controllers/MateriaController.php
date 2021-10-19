@@ -3,10 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Materia;
+use App\Models\Escuela;
 use Illuminate\Http\Request;
 
 class MateriaController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +35,7 @@ class MateriaController extends Controller
      */
     public function create()
     {
-        return view('materia.create');
+        return view('materia.create', ['escuelas'=>Escuela::all(), 'materias'=>Materia::all()]);
     }
 
     /**
@@ -35,7 +46,17 @@ class MateriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'codigo_materia' => 'required|max:6',
+            'nombre' => 'required',
+            'escuela_id' => 'required',
+            'unidades_valorativas' => 'required|integer',
+            'num_ciclo' => 'required|integer']);
+
+        $data = $request->all();
+        Materia::create($data);
+        $request->session()->flash('success', '¡La materia se registro con exito!');
+        return redirect('/materias/create');
     }
 
     /**
@@ -57,7 +78,7 @@ class MateriaController extends Controller
      */
     public function edit(Materia $materia)
     {
-        //
+        return view('materia.edit', ['materia' => $materia, 'escuelas' => Escuela::all(), 'todasMaterias' => Materia::all()]);
     }
 
     /**
@@ -69,7 +90,15 @@ class MateriaController extends Controller
      */
     public function update(Request $request, Materia $materia)
     {
-        //
+        $validatedData = $request->validate([
+            'codigo_materia' => 'required|max:6',
+            'nombre' => 'required',
+            'escuela_id' => 'required',
+            'unidades_valorativas' => 'required|integer',
+            'num_ciclo' => 'required|integer']);
+
+        $materia->update($request->all());
+        return redirect('/materias');
     }
 
     /**
@@ -80,6 +109,7 @@ class MateriaController extends Controller
      */
     public function destroy(Materia $materia)
     {
-        //
+        $materia->delete();
+        return redirect('/materias');
     }
 }

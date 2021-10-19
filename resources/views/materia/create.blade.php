@@ -1,49 +1,71 @@
 @extends('layouts.default')
 @section('content')
+
+@if ($errors->any())
 <div class="container">
-    <form>
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+</div>
+@endif
+
+@if(session("success"))
+<div class="container">
+    <div class="alert alert-success" role="alert">
+        <p>{{session('success')}}</p>
+    </div>
+</div>
+<br/>
+@endif
+
+<div class="container">
+    <form action="/materias" method="post" autocomplete=off>
+    @csrf
         <fieldset>
             <legend>Registrar Materia</legend>
                 <div class="mb-3">
                     <label for="CodigoMateria" class="form-label">Codigo de la materia</label>
-                    <input type="text" id="CodigoMateria" class="form-control">
+                    <input type="text" id="CodigoMateria" class="form-control" name="codigo_materia">
                 </div>
                 <div class="mb-3">
                     <label for="Nombre" class="form-label">Nombre de la materia</label>
-                    <input type="text" id="Nombre" class="form-control">
+                    <input type="text" id="Nombre" class="form-control" name="nombre">
                 </div>
                 <div class="mb-3">
                     <label for="Escuela" class="form-label">Escuela</label>
-                    <input class="form-control" list="datalistOptions" id="Escuela" placeholder="Escoger la escuela">
-                    <datalist id="datalistOptions">
-                        <option value="San Francisco">
-                        <option value="New York">
-                        <option value="Seattle">
-                        <option value="Los Angeles">
-                        <option value="Chicago">
-                    </datalist>
+                    <select id="Escuela" class="form-control" name="escuela_id">
+                        <option value="">...</option>
+                        @foreach($escuelas as $escuela)
+                            <option value="{{$escuela->id}}">{{$escuela->nombre}}</opcion>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="Prerrequisito" class="form-label">Prerrequisito</label>
-                    <input class="form-control" list="datalistOptions" id="Prerrequisito" placeholder="Type to search...">
-                    <datalist id="datalistOptions">
-                        <option value="San Francisco">
-                        <option value="New York">
-                        <option value="Seattle">
-                        <option value="Los Angeles">
-                        <option value="Chicago">
-                    </datalist>
+                    <select id="Prerrequisito" class="form-control" name="prerrequisito_id">
+                        <option value="">...</option>
+                        @foreach($materias as $materia)
+                            <option value="{{$materia->id}}">{{$materia->codigo_materia}} | {{$materia->nombre}}</opcion>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="Valoracion" class="form-label">Unidades Valorativas</label>
-                    <input type="text" id="Valoracion" class="form-control">
+                    <input type="text" id="Valoracion" class="form-control" name="unidades_valorativas">
                 </div>
                 <div class="mb-3">
-                    <label for="Ciclo" class="form-label">Ciclo en el que se inparte</label>
-                    <input type="text" id="Ciclo" class="form-control">
+                    <label for="Ciclo" class="form-label">Ciclo en el que se imparte</label>
+                    <input type="text" id="Ciclo" class="form-control" name="num_ciclo">
                 </div>
-            <input type="submit" class="btn btn-primary" value="Registrar">
+            <input type="submit" class="btn btn-primary" value="Registrar" id="registrar">&nbsp;
+            <input type="reset" class="btn btn-primary" value="Borrar">&nbsp;
+            <a href="{{route('materias.index')}}"><button type="button" class="btn btn-danger">Salir</button></a>
         </fieldset>
     </form>
 </div>
+<br/>
+
 @endsection
