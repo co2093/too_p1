@@ -9,14 +9,14 @@ class Materia extends Model
 {
     use HasFactory;
     protected $fillable = ["escuela_id", "prerrequisito_id", "codigo_materia", "nombre", "unidades_valorativas", "num_ciclo"];
+    
     public function materia()
     {
         return $this->hasOne('App\Models\Materia');
     }
-
     public function prerrequisito()
     {
-        return $this->belongsTo('App\Models\Materia', 'id');
+        return $this->belongsTo('App\Models\Materia');
     }
     public function escuela()
     {

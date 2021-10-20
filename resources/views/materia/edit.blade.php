@@ -32,7 +32,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="Nombre" class="form-label">Nombre de la materia</label>
-                            <input type="text" id="Nombre" class="form-control" name="nombre" value="{{$materia->codigo_materia}}">
+                            <input type="text" id="Nombre" class="form-control" name="nombre" value="{{$materia->nombre}}">
                         </div>
                         <div class="mb-3">
                             <label for="Escuela" class="form-label">Escuela</label>
@@ -48,9 +48,14 @@
                         <div class="mb-3">
                             <label for="Prerrequisito" class="form-label">Prerrequisito</label>
                             <select id="Prerrequisito" class="form-control" name="prerrequisito_id">
-                                <option value="{{$materia->prerrequisito->id}}">{{$materia->prerrequisito->codigo_materia}} | {{$materia->prerrequisito->nombre}}</option>
+                            @if($materia->prerrequisito)
+                                <option value="{{$materia->prerrequisito}}">{{$materia->prerrequisito->codigo_materia}} | {{$materia->prerrequisito->nombre}}</option>
+                                <option value="">Sin prerrequisito</option>
+                            @else
+                                <option value="">Sin prerrequisito</option>
+                            @endif
                                 @foreach($todasMaterias as $laMateria)
-                                    @if($materia->prerrequisito->id != $laMateria->id)
+                                    @if($materia->id != $laMateria->id)
                                         <option value="{{$laMateria->id}}">{{$laMateria->codigo_materia}} | {{$laMateria->nombre}}</opcion>
                                     @endif
                                 @endforeach

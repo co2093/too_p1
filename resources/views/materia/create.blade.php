@@ -46,7 +46,7 @@
                 <div class="mb-3">
                     <label for="Prerrequisito" class="form-label">Prerrequisito</label>
                     <select id="Prerrequisito" class="form-control" name="prerrequisito_id">
-                        <option value="">...</option>
+                        <option value="">Sin prerrequisito</option>
                         @foreach($materias as $materia)
                             <option value="{{$materia->id}}">{{$materia->codigo_materia}} | {{$materia->nombre}}</opcion>
                         @endforeach
@@ -61,7 +61,6 @@
                     <input type="text" id="Ciclo" class="form-control" name="num_ciclo">
                 </div>
             <input type="submit" class="btn btn-primary" value="Registrar" id="registrar">&nbsp;
-            <input type="reset" class="btn btn-primary" value="Borrar">&nbsp;
             <a href="{{route('materias.index')}}"><button type="button" class="btn btn-danger">Salir</button></a>
         </fieldset>
     </form>
