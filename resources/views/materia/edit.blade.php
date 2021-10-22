@@ -49,7 +49,7 @@
                             <label for="Prerrequisito" class="form-label">Prerrequisito</label>
                             <select id="Prerrequisito" class="form-control" name="prerrequisito_id">
                             @if($materia->prerrequisito)
-                                <option value="{{$materia->prerrequisito}}">{{$materia->prerrequisito->codigo_materia}} | {{$materia->prerrequisito->nombre}}</option>
+                                <option value="{{$materia->prerrequisito->id}}">{{$materia->prerrequisito->codigo_materia}} | {{$materia->prerrequisito->nombre}}</option>
                                 <option value="">Sin prerrequisito</option>
                             @else
                                 <option value="">Sin prerrequisito</option>
