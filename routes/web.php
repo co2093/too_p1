@@ -25,11 +25,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Auth::routes();
-
-//Route::get('/docente',[App\Http\Controllers\DocenteController::class, 'index']);
-
-//Auth::routes();
-
-
 Route::resource('docente',App\Http\Controllers\DocenteController::class);
