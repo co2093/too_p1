@@ -13,4 +13,8 @@ class Escuela extends Model
     {
         return $this->hasMany('App\Models\Materia');
     }
+    public function edificios()
+    {
+        return $this->belongsToMany('App\Models\Edificio');
+    }
 }

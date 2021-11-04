@@ -28,7 +28,7 @@
                 <legend>Editar materia</legend>
                         <div class="mb-3">
                             <label for="CodigoMateria" class="form-label">Codigo de la materia</label>
-                            <input type="text" id="CodigoMateria" class="form-control" name="codigo_materia" value="{{$materia->codigo_materia}}">
+                            <input type="text" id="CodigoMateria" class="form-control" name="codigo_materia" value="{{$materia->codigo_materia}}" disabled>
                         </div>
                         <div class="mb-3">
                             <label for="Nombre" class="form-label">Nombre de la materia</label>
