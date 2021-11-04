@@ -17,6 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'rol_id',
         'name',
         'email',
         'password',
@@ -31,6 +32,16 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function rol(){
+
+        return $this->belongsTo('App\Models\Rol');
+    }
+
+    public function docentes(){
+
+        return $this->hasMany('App\Models\Docente');
+    }
 
     /**
      * The attributes that should be cast to native types.

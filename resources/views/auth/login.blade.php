@@ -93,9 +93,6 @@
                                         @endif
                                     </div>
                                
-                                    <div class="text-center">
-                                        <a class="small" href="{{ route('register') }}">Crear cuenta</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>

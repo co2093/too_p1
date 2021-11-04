@@ -106,7 +106,7 @@
                       
                         <a class="collapse-item" href="{{route('materias.index')}}">Materias</a>
                         <a class="collapse-item" href="register.html">Locales</a>
-                        <a class="collapse-item" href="forgot-password.html">Docentes</a>
+                        <a class="collapse-item" href="{{route('docentes.index')}}">Docentes</a>
                         
                      
                         <a class="collapse-item" href="404.html">Ciclo</a>

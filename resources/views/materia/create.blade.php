@@ -22,7 +22,7 @@
 @endif
 
 <div class="container">
-    <form action="/materias" method="post" autocomplete=off>
+    <form action="{{route('materias.store')}}" method="post" autocomplete=off>
     @csrf
         <fieldset>
             <legend>Registrar Materia</legend>
