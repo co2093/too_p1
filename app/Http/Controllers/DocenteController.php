@@ -49,7 +49,7 @@ class DocenteController extends Controller
         //
         $validatedData = $request->validate([
             'user_id' => 'numeric',
-            'name' => 'required|alpha',
+            'name' => 'required|regex:/\w/',
             'email' => 'required|email',
             'password' => 'required|min:1|max:15|regex:/\w/',
             'dui' => 'required|regex:/(\d{8}\-\d{1})/',
@@ -123,7 +123,7 @@ class DocenteController extends Controller
     {
         $validatedData = $request->validate([
             'user_id' => 'numeric',
-            'name' => 'required|alpha',
+            'name' => 'required|regex:/\w/',
             'email' => 'required|email',
             'password',
             'dui' => 'required|regex:/(\d{8}\-\d{1})/',
