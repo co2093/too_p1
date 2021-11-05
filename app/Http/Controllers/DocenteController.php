@@ -106,9 +106,10 @@ class DocenteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Docente $docente)
     {
         //
+        return view('docente.edit', ['docente' => $docente, 'users' => User::all()]);
     }
 
     /**
@@ -118,9 +119,47 @@ class DocenteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Docente $docente)
     {
         //
+
+
+        $validatedData = $request->validate([
+            'user_id' => 'numeric',
+            'name' => 'required|alpha',
+            'email' => 'required|email',
+            'password' => 'required|min:1|max:15|regex:/\w/',
+            'dui' => 'required|regex:/(\d{8}\-\d{1})/',
+            'nit' => 'required|regex:/(\d{4}\-\d{6}\-\d{3}\-\d{1})/',
+            'fecha_n'=>'required|date',
+            'estado' => 'numeric']);
+
+            $user = User::findOrFail($request->user_id);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+
+            try{
+                $user->save();
+            }catch(\Illuminate\Database\QueryException $e){
+                return redirect('/docentes')->with("e","No se pudo guardar, el usuario ya existe");
+            }
+            
+            /* $id_user = $user->id;
+            $docente->user_id = $id_user; */
+            $docente->dui = $request->dui;
+            $docente->nit = $request->nit;
+            $docente->fecha_n = $request->fecha_n;
+            $docente->estado = '1'; 
+    
+            try{
+                $docente->save();
+            }catch(\Illuminate\Database\QueryException $e){
+                return redirect('/docentes')->with("e","No se pudo guardar los datos del docente");
+            }
+       
+            $request->session()->flash('success', '¡El docente se actualizó con exito!');
+            return redirect('/docentes');
     }
 
     /**
@@ -129,8 +168,10 @@ class DocenteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Docente $docente)
     {
         //
+        $docente->delete();
+        return redirect('/docentes');
     }
 }

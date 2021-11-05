@@ -11,8 +11,8 @@
         </ul>
 </div>
 @endif
-
-<form action="/materias/{{$materia->id}}" method="post">
+  
+<form action="{{ route('materias.destroy',$materia->id) }}" method="post">
         @csrf
     <div class="container d-flex">
         <input type="hidden" name="_method" value="DELETE">
@@ -20,8 +20,9 @@
     </div>
 </form>
 
-<form action="/materias/{{$materia->id}}" method="post" autocomplete=off>
+<form action="{{ route('materias.update',$materia->id) }}" method="post" autocomplete=off>
     @csrf
+    
     <div class="container">
         <input type="hidden" name="_method" value="PUT">
             <fieldset>

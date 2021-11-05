@@ -80,7 +80,7 @@ class MateriaController extends Controller
     {
         return view('materia.edit', ['materia' => $materia, 'escuelas' => Escuela::all(), 'todasMaterias' => Materia::all()]);
     }
-
+ 
     /**
      * Update the specified resource in storage.
      *
@@ -98,6 +98,7 @@ class MateriaController extends Controller
             'num_ciclo' => 'required|integer']);
 
         $materia->update($request->all());
+        $request->session()->flash('success', '¡La materia se actualizó con exito!');
         return redirect('/materias');
     }
 
