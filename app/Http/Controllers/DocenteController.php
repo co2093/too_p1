@@ -121,41 +121,35 @@ class DocenteController extends Controller
      */
     public function update(Request $request, Docente $docente)
     {
-        //
-
-
         $validatedData = $request->validate([
             'user_id' => 'numeric',
             'name' => 'required|alpha',
             'email' => 'required|email',
-            'password' => 'required|min:1|max:15|regex:/\w/',
+            'password',
             'dui' => 'required|regex:/(\d{8}\-\d{1})/',
             'nit' => 'required|regex:/(\d{4}\-\d{6}\-\d{3}\-\d{1})/',
             'fecha_n'=>'required|date',
             'estado' => 'numeric']);
-
-            $user = User::findOrFail($request->user_id);
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = bcrypt($request->password);
+            
+            $data = $request->only('name', 'email');
+            $password = $request->input('password');
+            if($password)
+                $data['password'] = bcrypt($password);
 
             try{
-                $user->save();
+                $docente->user->update($data);
             }catch(\Illuminate\Database\QueryException $e){
-                return redirect('/docentes')->with("e","No se pudo guardar, el usuario ya existe");
-            }
-            
-            /* $id_user = $user->id;
-            $docente->user_id = $id_user; */
-            $docente->dui = $request->dui;
-            $docente->nit = $request->nit;
-            $docente->fecha_n = $request->fecha_n;
-            $docente->estado = '1'; 
+                return redirect('/docentes')->with("e","No se pudo actualizar el usuario");
+            } 
     
             try{
-                $docente->save();
+                $docente->update([
+                    'dui' => $request->dui,
+                    'nit' => $request->nit,
+                    'fecha_n' => $request->fecha_n
+                ]);
             }catch(\Illuminate\Database\QueryException $e){
-                return redirect('/docentes')->with("e","No se pudo guardar los datos del docente");
+                return redirect('/docentes')->with("e","No se pudo actualizar los datos del docente");
             }
        
             $request->session()->flash('success', '¡El docente se actualizó con exito!');
@@ -171,7 +165,10 @@ class DocenteController extends Controller
     public function destroy(Docente $docente)
     {
         //
+        $id_user = $docente->user->id;
         $docente->delete();
+        $user = User::findOrFail($id_user);
+        $user->delete();
         return redirect('/docentes');
     }
 }

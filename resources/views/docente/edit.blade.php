@@ -16,7 +16,7 @@
         @csrf
     <div class="container d-flex">
         <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" class="btn btn-danger ml-auto" value="Eliminar materia">
+        <input type="submit" class="btn btn-danger ml-auto" value="Eliminar docente">
     </div>
 </form>
 
@@ -46,7 +46,7 @@
                     <label class="col-md-3 form-control-label" for="password">Password</label>
                     <div class="col-md-9">
                   
-                        <input type="password" id="password" name="password" value="{{$docente->user->password}}" class="form-control" placeholder="Ingrese el password" maxlength="15" pattern="^[a-zA-Z0-9_áéíóúñ\s\./+*]{1,15}$" title="La contraseá puede contener letras, números, los caracteres (. + * /), tamaño máximo: 15" required />
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Ingrese el password solo si desea modificarla" maxlength="15" pattern="^[a-zA-Z0-9_áéíóúñ\s\./+*]{1,15}$" title="La contraseá puede contener letras, números, los caracteres (. + * /), tamaño máximo: 15" />
                         @if ($errors->has('password'))
                         <span class="help-block">
                             <strong>{{ $errors->first('password','La contraseña debe coincidir y ser de mas de 5 carácteres') }}</strong>
