@@ -81,7 +81,7 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="utilities-color.html">Horarios</a>
+                        <a class="collapse-item" href="{{ route('menureserva') }}">Horarios</a>
                     </div>
                 </div>
             </li>
@@ -117,14 +117,14 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{ route('solicitudes') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Solicitudes</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('reportes') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Reportes</span></a>
             </li>
