@@ -22,7 +22,7 @@
                             <tr>
                                 <th scope="row">{{$escuela->id}}</th>
                                 <td>{{$escuela->nombre}}</td>
-                                <td style="width: 200px;"><a href="#"><button type="button" class="btn btn-primary">Gestionar Edificios</button></a></td>
+                                <td style="width: 200px;"><a href="{{route('edificios.index', $escuela)}}"><button type="button" class="btn btn-primary">Gestionar Edificios</button></a></td>
                                 <td style="width: 100px;"><a href="{{route('escuela.edit', $escuela)}}"><button type="button" class="btn btn-warning">Editar</button></a></td>
                             </tr>                   
                     @endforeach

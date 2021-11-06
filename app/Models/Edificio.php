@@ -9,6 +9,7 @@ class Edificio extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['nombre', 'ubicacion'];
 
     public function escuelas()
     {
