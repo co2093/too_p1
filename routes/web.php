@@ -28,3 +28,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('materias', App\Http\Controllers\MateriaController::class);
 
 Route::resource('docentes', App\Http\Controllers\DocenteController::class);
+
+Route::get('/menureserva', [App\Http\Controllers\ReservasController::class, 'index'])->name('menureserva');
+
+Route::post('/horarios/local/', [App\Http\Controllers\ReservasController::class, 'horarios'])->name('horarios/local');
