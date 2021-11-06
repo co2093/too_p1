@@ -62,6 +62,43 @@
         </div>
     </div>
 
+
+
+
+    <div class="card">
+        <div class="card-header text-center">Solicitar horario para {{$id}}</div>
+            <div class="card-body">
+
+            <form action="{{ url('/horarios/local/') }}" method="POST" class="form-inline">
+                {{ csrf_field() }}
+
+            <div class="form-group mb-2">
+                <label for="staticEmail2" class="sr-only">Locales</label>
+                <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Seleccionar">
+            </div>
+
+            <div class="form-group mx-sm-3 mb-2">
+                <select class="form-control" id="horario" name="horario">
+                    <option value="LCOM1">6:20-8:00</option>
+                </select>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <select class="form-control" id="dia" name="dia">
+                    <option value="LCOM1">Lunes</option>
+                </select>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <select class="form-control" id="materia" name="materia">
+                    <option value="LCOM1">PRN115</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Confirmar</button>
+            </form>
+
+            </div>
+        </div>
+    </div>
+
 </div>
 
 @endsection

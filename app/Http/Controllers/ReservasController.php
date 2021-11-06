@@ -22,4 +22,9 @@ class ReservasController extends Controller
 
         return view('reserva.horarios', compact('id'));
     }
+
+    public function solicitudesIndex(){
+
+        return view('reserva.solicitudes');
+    }
 }
