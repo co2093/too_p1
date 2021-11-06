@@ -28,4 +28,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('materias', App\Http\Controllers\MateriaController::class);
 
+
+
+
+
+
+
 Route::resource('escuela', App\Http\Controllers\EscuelaController::class);
