@@ -90,14 +90,29 @@ class MateriaController extends Controller
      */
     public function update(Request $request, Materia $materia)
     {
-        $validatedData = $request->validate([
-            'codigo_materia'=>'required|max:6|unique:materias',
-            'nombre' => 'required',
-            'escuela_id' => 'required',
-            'unidades_valorativas' => 'required|integer',
-            'num_ciclo' => 'required|integer']);
-        $materia->update($request->all());
-        $request->session()->flash('success', '¡La materia se actualizó con exito!');
+        if($materia->codigo_materia == $request->codigo_materia){
+            $validatedData = $request->validate([
+                'nombre' => 'required',
+                'escuela_id' => 'required',
+                'unidades_valorativas' => 'required|integer',
+                'num_ciclo' => 'required|integer']);
+            $materia->update([
+                'nombre'=>$request->nombre,
+                'escuela_id' => $request->escuela_id,
+                'prerrequisito_id'=>$request->prerrequisito_id,
+                'unidades_valorativas' => $request->unidades_valorativas,
+                'num_ciclo' => $request->num_ciclo
+            ]);
+        }else{
+            $validatedData = $request->validate([
+                'codigo_materia'=>'required|max:6|unique:materias',
+                'nombre' => 'required',
+                'escuela_id' => 'required',
+                'unidades_valorativas' => 'required|integer',
+                'num_ciclo' => 'required|integer']);
+    
+            $materia->update($request->all());
+        }
         return redirect('/materias');
     }
 
