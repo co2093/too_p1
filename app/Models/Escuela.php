@@ -9,8 +9,14 @@ class Escuela extends Model
 {
     use HasFactory;
 
+    protected $fillable = ["nombre"];
+
     public function materias()
     {
         return $this->hasMany('App\Models\Materia');
+    }
+    public function edificios()
+    {
+        return $this->belongsToMany('App\Models\Edificio');
     }
 }

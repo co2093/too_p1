@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Edificio;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('materias', App\Http\Controllers\MateriaController::class);
 
 Route::resource('docentes', App\Http\Controllers\DocenteController::class);
+
+Route::resource('escuela', App\Http\Controllers\EscuelaController::class);
 
 Route::get('/menureserva', [App\Http\Controllers\ReservasController::class, 'index'])->name('menureserva');
 
