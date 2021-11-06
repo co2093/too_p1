@@ -15,8 +15,8 @@ class CreateEdificioEscuelaTable extends Migration
     {
         Schema::create('edificio_escuela', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('edificio_id')->constrained();
-            $table->foreignId('escuela_id')->constrained();
+            $table->foreignId('edificio_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('escuela_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -15,8 +15,8 @@ class CreateMateriasTable extends Migration
     {
         Schema::create('materias', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('escuela_id')->constrained();
-            $table->foreignId('prerrequisito_id')->nullable()->constrained('materias');
+            $table->foreignId('escuela_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('prerrequisito_id')->nullable();
             $table->char('codigo_materia', 6)->unique();
             $table->string('nombre');
             $table->integer('unidades_valorativas');
