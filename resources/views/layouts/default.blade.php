@@ -110,7 +110,7 @@
                         
                      
                         <a class="collapse-item" href="404.html">Ciclo</a>
-                        <a class="collapse-item" href="blank.html">Escuelas</a>
+                        <a class="collapse-item" href="{{route('escuela.index')}}">Escuelas</a>
                     </div>
                 </div>
             </li>

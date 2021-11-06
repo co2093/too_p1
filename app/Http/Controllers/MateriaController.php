@@ -47,7 +47,7 @@ class MateriaController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'codigo_materia' => 'required|max:6',
+            'codigo_materia' => 'required|max:6|unique:materias',
             'nombre' => 'required',
             'escuela_id' => 'required',
             'unidades_valorativas' => 'required|integer',
@@ -91,12 +91,11 @@ class MateriaController extends Controller
     public function update(Request $request, Materia $materia)
     {
         $validatedData = $request->validate([
-            'codigo_materia' => 'required|max:6',
+            'codigo_materia'=>'required|max:6|unique:materias',
             'nombre' => 'required',
             'escuela_id' => 'required',
             'unidades_valorativas' => 'required|integer',
             'num_ciclo' => 'required|integer']);
-
         $materia->update($request->all());
         $request->session()->flash('success', '¡La materia se actualizó con exito!');
         return redirect('/materias');
