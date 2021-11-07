@@ -70,6 +70,17 @@
                             <label for="Ciclo" class="form-label">Ciclo en el que se imparte</label>
                             <input type="text" id="Ciclo" class="form-control" name="num_ciclo" value="{{$materia->num_ciclo}}">
                         </div>
+                        <div class="mb-3">
+                            <label for="docente_id" class="form-label">Coordinador</label>
+                            <select id="docente_id" class="form-control" name="docente_id">
+                                <option value="{{$materia->coordinador->id}}">{{$materia->coordinador->user->name}}</option>
+                                @foreach($docentes as $docente)
+                                    @if($materia->coordinador->id != $docente->id)
+                                        <option value="{{$docente->id}}">{{$docente->user->name}}</opcion>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
             </fieldset>
             <input type="submit" class="btn btn-warning" value="Editar" id="editar">&nbsp;
             <a href="{{route('materias.index')}}"><button type="button" class="btn btn-primary">Cancelar</button></a>

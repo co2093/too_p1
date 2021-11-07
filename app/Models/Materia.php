@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Materia extends Model
 {
     use HasFactory;
-    protected $fillable = ["escuela_id", "prerrequisito_id", "codigo_materia", "nombre", "unidades_valorativas", "num_ciclo"];
+    protected $fillable = ["escuela_id", "prerrequisito_id", "codigo_materia", "nombre", "unidades_valorativas", "num_ciclo", "docente_id"];
     
     public function materia()
     {
@@ -21,5 +21,8 @@ class Materia extends Model
     public function escuela()
     {
         return $this->belongsTo('App\Models\Escuela');
+    }
+    public function coordinador(){
+        return $this->belongsTo('App\Models\Docente', 'docente_id');
     }
 }

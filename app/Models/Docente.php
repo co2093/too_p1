@@ -14,4 +14,7 @@ class Docente extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+    public function materias(){
+        return $this->hasMany('App\Models\Materia');
+    }
 }
