@@ -24,7 +24,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <a href="{{route('docentes.create')}}"><button class="btn btn-primary" type="button"><i class="fa fa-plus fa-2x"></i>&nbsp;&nbsp;Insertar</button></a>
+            <a href="{{route('docentes.create')}}"><button class="btn btn-primary" type="button"><i class="fa fa-plus fa-1x"></i>&nbsp;&nbsp;Insertar</button></a>
         </div>
     </div>
     <div class="row">
@@ -52,21 +52,21 @@
                                 <td>
                                     @if($docente->estado=="1")
 
-                                        <button type="button" class="btn btn-success btn-md">
+                                        <button type="button" class="btn btn-success btn-sm">
                                         
-                                        <i class="fa fa-check fa-2x"></i> Activo
+                                        <i class="fa fa-check fa-1x"></i> Activo
                                         </button>
 
                                         @else
 
-                                        <button type="button" class="btn btn-danger btn-md">
+                                        <button type="button" class="btn btn-danger btn-sm">
                                     
-                                         <i class="fa fa-check fa-2x"></i> Inactivo
+                                         <i class="fa fa-check fa-1x"></i> Inactivo
                                          </button>
 
                                     @endif
                                 </td>
-                                <td style="width: 100px;"><a href="{{route('docentes.edit', $docente)}}"><button type="button" class="btn btn-warning"><i class="fa fa-edit fa-2x"></i></button></a></td>
+                                <td style="width: 100px;"><a href="{{route('docentes.edit', $docente)}}"><button type="button" class="btn btn-warning btn-sm"><i class="fa fa-edit fa-1x"></i></button></a></td>
                             </tr>                   
                     @endforeach
                     </tbody>
