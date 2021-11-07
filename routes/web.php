@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Edificio;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,21 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('materias', App\Http\Controllers\MateriaController::class);
 
 Route::resource('docentes', App\Http\Controllers\DocenteController::class);
+
+Route::resource('escuela', App\Http\Controllers\EscuelaController::class);
+
+Route::resource('escuela/{escuela}/edificios', App\Http\Controllers\EdificioController::class);
+
+Route::post('escuela/{escuela}/edificios/{edificio}/establecer', 'App\Http\Controllers\EdificioController@establecerEdificio')->name('edificios.establecer');
+
+Route::post('escuela/{escuela}/edificios/{edificio}/quitar', 'App\Http\Controllers\EdificioController@quitarEdificio')->name('edificios.quitar');
+
+Route::get('/menureserva', [App\Http\Controllers\ReservasController::class, 'index'])->name('menureserva');
+
+Route::post('/horarios/local/', [App\Http\Controllers\ReservasController::class, 'horarios'])->name('horarios/local');
+
+Route::get('/reportes', [App\Http\Controllers\ReportesController::class, 'index'])->name('reportes');
+
+Route::post('reportes-pdf', [App\Http\Controllers\ReportesController::class, 'descargarPDF'])->name('reportes.pdf');
+
+Route::get('/solicitudes', [App\Http\Controllers\ReservasController::class, 'solicitudesIndex'])->name('solicitudes');
