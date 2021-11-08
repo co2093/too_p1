@@ -5,7 +5,7 @@
 <div class="container-fluid">
 
     <div class="card">
-        <div class="card-header text-center">Horarios de laboratorio {{$id}}</div>
+        <div class="card-header text-center">Horarios de laboratorio {{$locale->nombre}}</div>
         <div class="card-body">
 
 
@@ -66,10 +66,10 @@
 
 
     <div class="card">
-        <div class="card-header text-center">Solicitar horario para {{$id}}</div>
+        <div class="card-header text-center">Solicitar horario para {{$locale->nombre}}</div>
             <div class="card-body">
 
-            <form action="{{ url('/horarios/local/') }}" method="POST" class="form-inline">
+            <form action="{{ url('/solicitudes/') }}" method="POST" class="form-inline">
                 {{ csrf_field() }}
 
             <div class="form-group mb-2">
@@ -78,18 +78,27 @@
             </div>
 
             <div class="form-group mx-sm-3 mb-2">
-                <select class="form-control" id="horario" name="horario">
-                    <option value="LCOM1">6:20-8:00</option>
+                <select class="form-control" id="hora" name="hora" required>
+                    <option value="">HORA</option>
+                    @foreach($horarios as $horario)
+                     <option value="{{$horario->id}}">{{$horario->hora}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group mx-sm-3 mb-2">
-                <select class="form-control" id="dia" name="dia">
-                    <option value="LCOM1">Lunes</option>
+                <select class="form-control" id="dia" name="dia" required>
+                    <option value="">DIA</option>
+                    @foreach($horarios as $horario)
+                     <option value="{{$horario->id}}">{{$horario->dia}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group mx-sm-3 mb-2">
-                <select class="form-control" id="materia" name="materia">
-                    <option value="LCOM1">PRN115</option>
+                <select class="form-control" id="materia_id" name="materia_id" required>
+                    <option value="">MATERIA</option>
+                    @foreach($materias as $materia)
+                     <option value="{{$materia->id}}">{{$materia->nombre}}</option>
+                    @endforeach
                 </select>
             </div>
             <button type="submit" class="btn btn-primary mb-2">Confirmar</button>

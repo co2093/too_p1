@@ -20,8 +20,11 @@
 
   <div class="form-group mx-sm-3 mb-2">
 
-    <select class="form-control" id="local" name="local">
-      <option value="LCOM1">LCOM1</option>
+    <select class="form-control" id="locale" name="locale" required>
+    <option value="">...</option>
+    @foreach($locales as $locale)
+      <option value="{{$locale->id}}">{{$locale->nombre}}</option>
+    @endforeach
     </select>
   </div>
   <button type="submit" class="btn btn-primary mb-2">Confirmar</button>
