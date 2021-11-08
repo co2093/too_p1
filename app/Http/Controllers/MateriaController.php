@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Materia;
 use App\Models\Escuela;
+use App\Models\Docente;
 use Illuminate\Http\Request;
 
 class MateriaController extends Controller
@@ -35,7 +36,7 @@ class MateriaController extends Controller
      */
     public function create()
     {
-        return view('materia.create', ['escuelas'=>Escuela::all(), 'materias'=>Materia::all()]);
+        return view('materia.create', ['escuelas'=>Escuela::all(), 'materias'=>Materia::all(), 'docentes' => Docente::all()]);
     }
 
     /**
@@ -51,7 +52,9 @@ class MateriaController extends Controller
             'nombre' => 'required',
             'escuela_id' => 'required',
             'unidades_valorativas' => 'required|integer',
-            'num_ciclo' => 'required|integer']);
+            'num_ciclo' => 'required|integer',
+            'docente_id' => 'required'
+        ]);
 
         $data = $request->all();
         Materia::create($data);
@@ -78,7 +81,7 @@ class MateriaController extends Controller
      */
     public function edit(Materia $materia)
     {
-        return view('materia.edit', ['materia' => $materia, 'escuelas' => Escuela::all(), 'todasMaterias' => Materia::all()]);
+        return view('materia.edit', ['materia' => $materia, 'escuelas' => Escuela::all(), 'todasMaterias' => Materia::all(), 'docentes' => Docente::all()]);
     }
  
     /**
@@ -95,13 +98,16 @@ class MateriaController extends Controller
                 'nombre' => 'required',
                 'escuela_id' => 'required',
                 'unidades_valorativas' => 'required|integer',
-                'num_ciclo' => 'required|integer']);
+                'num_ciclo' => 'required|integer',
+                'docente_id' => 'required'
+            ]);
             $materia->update([
                 'nombre'=>$request->nombre,
                 'escuela_id' => $request->escuela_id,
                 'prerrequisito_id'=>$request->prerrequisito_id,
                 'unidades_valorativas' => $request->unidades_valorativas,
-                'num_ciclo' => $request->num_ciclo
+                'num_ciclo' => $request->num_ciclo,
+                'docente_id' => $request->docente_id
             ]);
         }else{
             $validatedData = $request->validate([
@@ -109,7 +115,9 @@ class MateriaController extends Controller
                 'nombre' => 'required',
                 'escuela_id' => 'required',
                 'unidades_valorativas' => 'required|integer',
-                'num_ciclo' => 'required|integer']);
+                'num_ciclo' => 'required|integer',
+                'docente_id' => 'required'
+            ]);
     
             $materia->update($request->all());
         }

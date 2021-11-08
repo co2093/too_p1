@@ -60,6 +60,15 @@
                     <label for="Ciclo" class="form-label">Ciclo en el que se imparte</label>
                     <input type="text" id="Ciclo" class="form-control" name="num_ciclo">
                 </div>
+                <div class="mb-3">
+                    <label for="docente_id" class="form-label">Coordinador de la materia</label>
+                    <select id="docente_id" class="form-control" name="docente_id">
+                        <option value="">Escojer el Coordinador</option>
+                        @foreach($docentes as $docente)
+                            <option value="{{$docente->id}}">{{$docente->user->name}}</opcion>
+                        @endforeach
+                    </select>
+                </div>
             <input type="submit" class="btn btn-primary" value="Registrar" id="registrar">&nbsp;
             <a href="{{route('materias.index')}}"><button type="button" class="btn btn-danger">Salir</button></a>
         </fieldset>
