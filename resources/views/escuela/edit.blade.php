@@ -25,7 +25,7 @@
     <div class="container">
         <input type="hidden" name="_method" value="PUT">
         <fieldset>
-            <legend>Editar escuela</legend>
+            <legend>Editar Escuela</legend>
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre de la escuela</label>
                 <input type="text" id="nombre" class="form-control" name="nombre" value="{{$escuela->nombre}}">

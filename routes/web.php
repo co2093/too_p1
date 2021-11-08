@@ -35,6 +35,7 @@ Route::middleware('admin')->group(function(){
     Route::resource('docentes', App\Http\Controllers\DocenteController::class);
     Route::resource('escuela', App\Http\Controllers\EscuelaController::class);
     Route::resource('locales', App\Http\Controllers\LocalController::class);
+    Route::resource('horarios', App\Http\Controllers\HorarioController::class);
     Route::resource('escuela/{escuela}/edificios', App\Http\Controllers\EdificioController::class);
     Route::post('escuela/{escuela}/edificios/{edificio}/establecer', 'App\Http\Controllers\EdificioController@establecerEdificio')->name('edificios.establecer');
     Route::post('escuela/{escuela}/edificios/{edificio}/quitar', 'App\Http\Controllers\EdificioController@quitarEdificio')->name('edificios.quitar');   

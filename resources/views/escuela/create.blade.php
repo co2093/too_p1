@@ -25,7 +25,7 @@
     <form action="{{route('escuela.store')}}" method="post" autocomplete=off>
     @csrf
         <fieldset>
-            <legend>Registrar Materia</legend>
+            <legend>Registrar Escuela</legend>
                 <div class="mb-3">
                     <label for="CodigoMateria" class="form-label">Nombre de la escuela</label>
                     <input type="text" id="nombre" class="form-control" name="nombre">

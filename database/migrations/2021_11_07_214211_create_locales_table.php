@@ -19,7 +19,7 @@ class CreateLocalesTable extends Migration
             $table->foreignId('horario_id')->nullable();
             $table->string('nombre', 25);
             $table->smallInteger('planta');
-            $table->timestamps(); 
+            $table->timestamps();   
         });
     }
 
