@@ -22,4 +22,8 @@ class Locale extends Model
         return $this->hasOne('App\Models\Horario');
         
     }
+
+    public function images(){
+        return $this->hasMany('App\Models\Image');
+    }
 }
