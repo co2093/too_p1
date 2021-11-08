@@ -105,11 +105,11 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                       
                         <a class="collapse-item" href="{{route('materias.index')}}">Materias</a>
-                        <a class="collapse-item" href="register.html">Locales</a>
+                        <a class="collapse-item" href="{{route('locales.index')}}">Locales</a>
                         <a class="collapse-item" href="{{route('docentes.index')}}">Docentes</a>
                         
                      
-                        <a class="collapse-item" href="404.html">Ciclo</a>
+                        <a class="collapse-item" href="{{route('horarios.index')}}">Horarios</a>
                         <a class="collapse-item" href="{{route('escuela.index')}}">Escuelas</a>
                     </div>
                 </div>

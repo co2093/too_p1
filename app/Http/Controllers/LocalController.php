@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Locale;
+use App\Models\Edificio;
 
 class LocalController extends Controller
 {
@@ -13,7 +15,7 @@ class LocalController extends Controller
      */
     public function index()
     {
-        //
+        return view('local.index', ['locales'=>Locale::all()]);
     }
 
     /**
@@ -23,7 +25,7 @@ class LocalController extends Controller
      */
     public function create()
     {
-        //
+        return view('local.create', ['edificios'=>Edificio::all(), 'locales'=>Locale::all()]);
     }
 
     /**
@@ -34,7 +36,16 @@ class LocalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'edificio_id' => 'required|numeric',
+            'horario_id' => 'numeric',
+            'nombre' => 'required|regex:/\w/',
+            'planta' => 'required|integer']);
+
+        $data = $request->all();  
+        Locale::create($data);
+        $request->session()->flash('success', '¡El Local se registro con exito!');
+        return redirect('/locales/create');
     }
 
     /**
@@ -54,9 +65,9 @@ class LocalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Locale $locale)
     {
-        //
+        return view('local.edit', ['locale' => $locale, 'edificios' => Edificio::all()]);
     }
 
     /**
@@ -66,9 +77,17 @@ class LocalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Locale $locale)
     {
-        //
+        $validatedData = $request->validate([
+            'edificio_id' => 'required|numeric',
+            'horario_id' => 'numeric',
+            'nombre' => 'required|regex:/\w/',
+            'planta' => 'required|integer']);
+
+        $locale->update($request->All());
+        $request->session()->flash('success', '¡El local se actualizó con exito!');
+        return redirect('/locales');
     }
 
     /**
@@ -77,8 +96,10 @@ class LocalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, Locale $locale)
     {
-        //
+        $locale->delete();
+        $request->session()->flash('success', 'Local eliminado exitosamente!');
+        return redirect('/locales');
     }
 }

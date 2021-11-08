@@ -30,6 +30,10 @@ Route::resource('materias', App\Http\Controllers\MateriaController::class);
 
 Route::resource('docentes', App\Http\Controllers\DocenteController::class);
 
+Route::resource('locales', App\Http\Controllers\LocalController::class);
+
+Route::resource('horarios', App\Http\Controllers\HorarioController::class);
+
 Route::resource('escuela', App\Http\Controllers\EscuelaController::class);
 
 Route::resource('escuela/{escuela}/edificios', App\Http\Controllers\EdificioController::class);

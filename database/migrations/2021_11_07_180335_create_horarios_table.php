@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLocalesTable extends Migration
+class CreateHorariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateLocalesTable extends Migration
      */
     public function up()
     {
-        Schema::create('locales', function (Blueprint $table) {
+        Schema::create('horarios', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 25);
-            $table->smallInteger('posicion');
-            $table->boolean('estado');
-            $table->timestamps(); 
+            $table->string('hora');
+            $table->string('dia');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +28,6 @@ class CreateLocalesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('locales');
+        Schema::dropIfExists('horarios');
     }
 }
