@@ -17,4 +17,7 @@ class Docente extends Model
     public function materias(){
         return $this->hasMany('App\Models\Materia');
     }
+    public function reservas(){
+        return $this->hasMany('App\Models\Reserva');
+    }
 }

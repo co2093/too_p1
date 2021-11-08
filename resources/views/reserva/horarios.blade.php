@@ -69,13 +69,15 @@
         <div class="card-header text-center">Solicitar horario para {{$locale->nombre}}</div>
             <div class="card-body">
 
-            <form action="{{ url('/solicitudes/') }}" method="POST" class="form-inline">
+            <form action="{{ url('/solicitudes') }}" method="POST" class="form-inline">
                 {{ csrf_field() }}
 
             <div class="form-group mb-2">
                 <label for="staticEmail2" class="sr-only">Locales</label>
                 <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Seleccionar">
             </div>
+
+            <input type="hidden" id="locale_id" class="form-control" name="locale_id" value="{{$locale->id}}">
 
             <div class="form-group mx-sm-3 mb-2">
                 <select class="form-control" id="hora" name="hora" required>

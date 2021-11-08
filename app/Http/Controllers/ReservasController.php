@@ -20,7 +20,7 @@ class ReservasController extends Controller
 
     public function horarios(Request $request){
 
-        $id = $request->input('locale');
+        $id = $request->locale;
         $locale = Locale::findOrFail($id);
         $horarios = Horario::all();
         $materias = Materia::all();
@@ -30,7 +30,7 @@ class ReservasController extends Controller
         return view('reserva.horarios', compact(['locale', 'horarios', 'materias']));
     }
 
-    public function solicitudesIndex(Request $request, Locale $locale){
+    public function solicitudesIndex(Request $request){
 
         $validatedData = $request->validate([
             'dia' => 'required|regex:/\w/',
@@ -43,10 +43,12 @@ class ReservasController extends Controller
         $docente = Docente::findOrFail($id_docente);
         $horario = Horario::create(['hora'=>$request->hora, 'dia'=>$request->dia]);
         $id_horario = $horario->id;
-        $id_local = $local->id;
+        $id_local = $request->locale_id;
+        $locale = Locale::findOrFail($id_local);
 
-        Reserva::create(['local_id'=>$id_local, 'materia_id'=>$request->materia_id, 'docente_id'=>$request->docente_id, 'horario_id'=>$request->horario_id]);
+        Reserva::create(['local_id'=>$id_local, 'materia_id'=>$request->materia_id, 'docente_id'=>$id_docente, 'horario_id'=>$id_horario]);
+        $reservas = Reserva::all();
 
-        return view('reserva.solicitudes', ['locale' => $locale, 'materia' => $materia, 'docente' => $docente, 'horario' => $horario]);
+        return view('reserva.solicitudes', compact('reservas'));
     }
 }

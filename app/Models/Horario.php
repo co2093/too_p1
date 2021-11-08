@@ -16,5 +16,9 @@ class Horario extends Model
         return $this->belongsToMany('App\Models\Local');
 
     }
+    public function reservas()
+    {
+        return $this->hasMany('App\Models\Reserva');
+    }
 
 }

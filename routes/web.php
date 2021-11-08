@@ -41,18 +41,16 @@ Route::middleware('admin')->group(function(){
     Route::post('escuela/{escuela}/edificios/{edificio}/quitar', 'App\Http\Controllers\EdificioController@quitarEdificio')->name('edificios.quitar');   
     Route::get('/reportes', [App\Http\Controllers\ReportesController::class, 'index'])->name('reportes');
     Route::post('reportes-pdf', [App\Http\Controllers\ReportesController::class, 'descargarPDF'])->name('reportes.pdf');
-    Route::post('/solicitudes', [App\Http\Controllers\ReservasController::class, 'solicitudesIndex'])->name('solicitudes');
     Route::get('/menureserva', [App\Http\Controllers\ReservasController::class, 'index'])->name('menureserva');
     Route::post('/horarios/local/', [App\Http\Controllers\ReservasController::class, 'horarios'])->name('horarios/local');
-<<<<<<< HEAD
-}); 
-=======
     Route::resource('locales/{local}/images', App\Http\Controllers\ImageController::class);
-});
->>>>>>> 7e8d584fac61b9bfdee4c969c8d0add6bc6e8d3c
+
+}); 
+
 
 Route::middleware('docente')->group(function(){
     Route::get('/menureserva', [App\Http\Controllers\ReservasController::class, 'index'])->name('menureserva');
     Route::post('/horarios/local/', [App\Http\Controllers\ReservasController::class, 'horarios'])->name('horarios/local');
+    Route::post('/solicitudes', [App\Http\Controllers\ReservasController::class, 'solicitudesIndex'])->name('solicitudes');
 });
 

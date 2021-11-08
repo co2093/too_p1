@@ -10,15 +10,27 @@ class Reserva extends Model
     use HasFactory;
     protected $fillable = ['local_id', 'materia_id', 'docente_id', 'horario_id'];
 
-    public function edificio()
+    public function materia()
     {
-        return $this->belongsTo('App\Models\Edificio');
+        return $this->belongsTo('App\Models\Materia', 'materia_id');
 
     }
 
     public function horario()
     {
-        return $this->hasOne('App\Models\Horario');
+        return $this->belongsTo('App\Models\Horario', 'horario_id');
         
+    }
+
+    public function docente()
+    {
+        return $this->belongsTo('App\Models\Docente', 'docente_id');
+        
+    }
+
+    public function local()
+    {
+        return $this->belongsTo('App\Models\Locale', 'local_id');
+
     }
 }

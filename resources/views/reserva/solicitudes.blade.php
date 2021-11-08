@@ -22,19 +22,18 @@
 
 
           <fieldset>
-                <legend>Editar Docente</legend>
 
                 <div class="form-group row">
                     <label class="col-md-3 form-control-label" for="name">Local</label>
                     <div class="col-md-9">
-                        <input type="text" id="local" name="local" value="{{$local->nombre}}" class="form-control">
+                        <input type="text" id="local" name="local" value="{{$reserva->local->nombre}}" class="form-control">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-md-3 form-control-label" for="name">Materia</label>
                     <div class="col-md-9">
-                        <input type="text" id="materia" name="materia" value="{{$materia->nombre}}" class="form-control">
+                        <input type="text" id="materia" name="materia" value="{{$reserva->materia->nombre}}" class="form-control">
                     </div>
                 </div>
 
@@ -42,15 +41,15 @@
                 <div class="form-group row">
                     <label class="col-md-3 form-control-label" for="name">Docente</label>
                     <div class="col-md-9">
-                        <input type="text" id="materia" name="materia" value="{{$docente->nombre}}" class="form-control">
+                        <input type="text" id="materia" name="materia" value="{{$reserva->docente->nombre}}" class="form-control">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-md-3 form-control-label" for="name">Horario</label>
                     <div class="col-md-9">
-                        <input type="text" id="materia" name="materia" value="{{$horario->dia}}" class="form-control">
-                        <input type="text" id="materia" name="materia" value="{{$horario->hora}}" class="form-control">
+                        <input type="text" id="materia" name="materia" value="{{$reserva->horario->dia}}" class="form-control">
+                        <input type="text" id="materia" name="materia" value="{{$reserva->horario->hora}}" class="form-control">
                       </div>
 
                 </div>

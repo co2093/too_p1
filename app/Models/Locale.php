@@ -26,4 +26,8 @@ class Locale extends Model
     public function images(){
         return $this->hasMany('App\Models\Image');
     }
+
+    public function reservas(){
+        return $this->hasMany('App\Models\Reserva');
+    }
 }

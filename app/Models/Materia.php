@@ -14,6 +14,10 @@ class Materia extends Model
     {
         return $this->hasOne('App\Models\Materia');
     }
+    public function reservas()
+    {
+        return $this->hasMany('App\Models\Reserva');
+    }
     public function prerrequisito()
     {
         return $this->belongsTo('App\Models\Materia');
