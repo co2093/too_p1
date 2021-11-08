@@ -48,6 +48,7 @@
                                 <td>{{$locale->nombre}}</td>
                                 <td>{{$locale->edificio->nombre}}</td>
                                 <td>{{$locale->planta}}</td>
+                                <td style="width: 200px;"><a href="{{route('images.index', $locale)}}"><button type="button" class="btn btn-primary">Gestionar Imagenes</button></a></td>
                                 <td style="width: 100px;"><a href="{{route('locales.edit', $locale)}}"><button type="button" class="btn btn-warning btn-sm"><i class="fa fa-edit fa-1x"></i></button></a></td>
                             </tr>                   
                     @endforeach
