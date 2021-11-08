@@ -22,31 +22,43 @@
 @endif
 
 <div class="container">
-    <form action="/locales" method="post" autocomplete=off>
+<form action="{{route('locales.store')}}" method="post" autocomplete=off>
     @csrf
         <fieldset>
             <legend>Registrar Local</legend>
-                <div class="mb-3">
-                    <label for="Nombre" class="form-label">Nombre del Local</label>
-                    <input type="text" id="nombre" class="form-control" name="nombre">
+                
+            <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="nombre">Nombre del Local</label>
+                <div class="col-md-9">
+                  
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="ingrese el nombre del local" required>
+                       
                 </div>
-                <div class="mb-3">
-                    <label for="Edificio" class="form-label">Edificio</label>
-                    <select id="edificio_id" class="form-control" name="edificio_id">
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="edificio">Edificio</label> 
+                <div class="col-md-9">
+                    <select id="edificio_id" class="form-control" name="edificio_id" required >
                         <option value="">...</option>
                         @foreach($edificios as $edificio)
                             <option value="{{$edificio->id}}">{{$edificio->nombre}}</opcion>
                         @endforeach
                     </select>
                 </div>
-                <div class="mb-3">
-                    <label for="Posicion" class="form-label">Numero de piso</label>
-                    <input type="number" id="posicion" class="form-control" name="posicion">
-                </div>
+            </div>
 
+            <div class="form-group row">
+                <label class="col-md-3 form-control-label" for="planta">Numero de planta</label>
+                <div class="col-md-9">
+                  
+                <input type="number" class="form-control" id="planta" name="planta" placeholder="##" required />
+                       
                 </div>
+            </div>
+
             <input type="submit" class="btn btn-primary" value="Registrar" id="registrar">&nbsp;
-            <a href="{{route('materias.index')}}"><button type="button" class="btn btn-danger">Salir</button></a>
+            <a href="{{route('locales.index')}}"><button type="button" class="btn btn-danger">Salir</button></a>
         </fieldset>
     </form>
 </div>

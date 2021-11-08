@@ -162,13 +162,14 @@ class DocenteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Docente $docente)
+    public function destroy(Request $request, Docente $docente)
     {
         //
         $id_user = $docente->user->id;
         $docente->delete();
         $user = User::findOrFail($id_user);
         $user->delete();
+        $request->session()->flash('success', '¡Docente eliminado con exito!');
         return redirect('/docentes');
     }
 }
