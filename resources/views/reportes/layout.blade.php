@@ -23,8 +23,32 @@
     <table class="table table-striped table-bordered first">
         <thead style="background-color:black;text-align:center;">
 
+            @if($tipoReporte == "Actividad")
+                <tr>
+                    <th style="color:white;">Local</th>
+                    <th style="color:white;">Actividad</th>
+                    <th style="color:white;">Cantidad de reservas</th>
+                </tr>
+            @endif
         </thead>
         <tbody>
+            
+            @if($tipoReporte == "Actividad")
+            <tr>
+                @foreach($actividades as $a)
+                <td>
+                    @foreach ($locales as $l)
+                        @if($l->id == $a->local_id)
+                            {{$l->nombre}}
+                        @endif
+                    @endforeach
+                </td>
+                <td>?</td>
+                <td>{{$a->cantidad}}</td>
+                @endforeach
+            </tr>
+
+            @endif
 
         </tbody>
     </table>

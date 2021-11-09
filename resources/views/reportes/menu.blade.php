@@ -21,10 +21,12 @@
             <div class="form-group mx-sm-3 mb-2">
                 <select class="form-control" id="tiporeporte" name="tiporeporte">
                     <option value="Local">Locales</option>
-                    <option value="Materia">Materias</option>
+                    <option value="Actividad">Actividades</option>
                     <option value="Escuela">Escuelas</option>
                 </select>
             </div>
+
+            
 
             
 
