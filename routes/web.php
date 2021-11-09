@@ -52,5 +52,6 @@ Route::middleware('docente')->group(function(){
     Route::get('/menureserva', [App\Http\Controllers\ReservasController::class, 'index'])->name('menureserva');
     Route::post('/horarios/local/', [App\Http\Controllers\ReservasController::class, 'horarios'])->name('horarios/local');
     Route::post('/solicitudes', [App\Http\Controllers\ReservasController::class, 'solicitudesIndex'])->name('solicitudes');
+    Route::get('/listado', [App\Http\Controllers\ReservasController::class, 'listadoSolicitudes'])->name('listadoSolicitudes');
 });
 

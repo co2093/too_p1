@@ -47,7 +47,14 @@ class ReservasController extends Controller
         $locale = Locale::findOrFail($id_local);
 
         Reserva::create(['local_id'=>$id_local, 'materia_id'=>$request->materia_id, 'docente_id'=>$id_docente, 'horario_id'=>$id_horario]);
-        $reservas = Reserva::all();
+        $reservas = Reserva::all(); 
+
+        return view('reserva.solicitudes', compact('reservas'));
+    }
+
+
+    public function listadoSolicitudes(){
+        $reservas = Reserva::all(); 
 
         return view('reserva.solicitudes', compact('reservas'));
     }

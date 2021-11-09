@@ -117,7 +117,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('solicitudes') }}">
+                <a class="nav-link" href="{{ route('listadoSolicitudes') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Solicitudes</span></a>
             </li>
