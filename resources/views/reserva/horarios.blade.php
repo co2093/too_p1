@@ -82,16 +82,16 @@
             <div class="form-group mx-sm-3 mb-2">
                 <select class="form-control" id="hora" name="hora" required>
                     <option value="">HORA</option>
-                    @foreach($horarios as $horario)
-                     <option value="{{$horario->id}}">{{$horario->hora}}</option>
+                    @foreach($horas as $hora)
+                     <option value="{{$hora}}">{{$hora}}</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group mx-sm-3 mb-2">
                 <select class="form-control" id="dia" name="dia" required>
                     <option value="">DIA</option>
-                    @foreach($horarios as $horario)
-                     <option value="{{$horario->id}}">{{$horario->dia}}</option>
+                    @foreach($dias as $dia)
+                     <option value="{{$dia}}">{{$dia}}</option>
                     @endforeach
                 </select>
             </div>

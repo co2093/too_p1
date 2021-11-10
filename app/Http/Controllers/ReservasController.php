@@ -23,11 +23,21 @@ class ReservasController extends Controller
         $id = $request->locale;
         $locale = Locale::findOrFail($id);
         $horarios = Horario::all();
+        $dias = [];
+        $horas = [];
+        foreach($horarios as $horario){
+            if(!array_key_exists($horario->dia, $dias)){
+                $dias[$horario->dia] = $horario->dia;
+            }
+            if(!array_key_exists($horario->hora, $horas)){
+                $horas[$horario->hora] = $horario->hora;
+            }
+        }
         $materias = Materia::all();
       //  dd($id);
 
 
-        return view('reserva.horarios', compact(['locale', 'horarios', 'materias']));
+        return view('reserva.horarios', compact(['locale', 'horas', 'dias', 'materias']));
     }
 
     public function solicitudesIndex(Request $request){
@@ -41,11 +51,11 @@ class ReservasController extends Controller
         $materia = Materia::findOrFail($request->materia_id);
         $id_docente = $materia->docente_id;
         $docente = Docente::findOrFail($id_docente);
-        $horario = Horario::create(['hora'=>$request->hora, 'dia'=>$request->dia]);
-        $id_horario = $horario->id;
+        $horario = Horario::where('hora', $request->hora)->where('dia', $request->dia)->get();
+        $id_horario = $horario[0]->id;
         $id_local = $request->locale_id;
         $locale = Locale::findOrFail($id_local);
-
+        
         Reserva::create(['local_id'=>$id_local, 'materia_id'=>$request->materia_id, 'docente_id'=>$id_docente, 'horario_id'=>$id_horario]);
         $reservas = Reserva::all(); 
 

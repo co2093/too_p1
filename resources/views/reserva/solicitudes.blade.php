@@ -15,7 +15,11 @@
   @foreach($reservas as $reserva)
     <div class="col">
       <div class="card border-info h-100">
+        @if(!$reserva->local->images->isEmpty())
+        <img src="/img/locales/{{$reserva->local->images[0]->nombre}}" class="card-img-top" alt="{{$reserva->local->images[0]->nombre}}">
+        @else
         <img src="..." class="card-img-top" alt="...">
+        @endif
         <div class="card-body text-info">
           <h5 class="card-title">Reserva</h5>
           <p class="card-text"> 
@@ -41,7 +45,7 @@
                 <div class="form-group row">
                     <label class="col-md-3 form-control-label" for="name">Docente</label>
                     <div class="col-md-9">
-                        <input type="text" id="materia" name="materia" value="{{$reserva->docente->nombre}}" class="form-control">
+                        <input type="text" id="materia" name="materia" value="{{$reserva->docente->user->name}}" class="form-control">
                     </div>
                 </div>
 
