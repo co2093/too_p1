@@ -50,7 +50,7 @@ class ReportesController extends Controller
         ->join('edificio_escuela', 'edificio_escuela.edificio_id', '=', 'edificios.id')
         ->join('escuelas', 'escuelas.id', '=', 'edificio_escuela.escuela_id')
         ->select('locales.nombre as localnombre', 'escuelas.nombre as escuela', DB::raw('count(*) as cantidad'))
-        ->groupBy('escuelas.id')
+        ->groupBy('escuelas.id', 'locales.id')
         ->get();
         
         //dd($porEscuela);

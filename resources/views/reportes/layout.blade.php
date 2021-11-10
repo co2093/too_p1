@@ -72,18 +72,6 @@
 
         @endif
 
-                @if($tipoReporte == "Horario")
-
-            @foreach($porHorario as $m)
-                <tr>
-                    <td>{{$m->localnombre}}</td>
-                    <td>{{$m->materianombre}}</td>
-                    <td>{{$m->hora}}</td>
-                    <td>{{$m->cantidad}}</td> 
-                </tr>
-            @endforeach
-
-        @endif
 
         @if($tipoReporte == "Escuela")
 
