@@ -13,14 +13,14 @@
 
   <div class="row row-cols-1 row-cols-md-3 g-4">
   @foreach($reservas as $reserva)
-    <div class="col">
-      <div class="card border-info h-100">
+    <div class="col mt-4">
+      <div class="card border-info bg-primary h-100">
         @if(!$reserva->local->images->isEmpty())
         <img src="/img/locales/{{$reserva->local->images[0]->nombre}}" class="card-img-top" alt="{{$reserva->local->images[0]->nombre}}">
         @else
         <img src="..." class="card-img-top" alt="...">
         @endif
-        <div class="card-body text-info">
+        <div class="card-body text-light">
           <h5 class="card-title">Reserva</h5>
           <p class="card-text"> 
 
@@ -58,15 +58,12 @@
 
                 </div>
 
-
-               
-
-
             </fieldset>
 
-
-
           </p>
+          
+          <a href="#" class="btn btn-success">Aprobar</a>
+
         </div>
       </div>
     </div>
