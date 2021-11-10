@@ -56,7 +56,7 @@ class ReservasController extends Controller
         $id_local = $request->locale_id;
         $locale = Locale::findOrFail($id_local);
         
-        $reserva = Reserva::create(['local_id'=>$id_local, 'materia_id'=>$request->materia_id, 'docente_id'=>$id_docente, 'horario_id'=>$id_horario]);
+        $reserva = Reserva::create(['local_id'=>$id_local, 'materia_id'=>$request->materia_id, 'docente_id'=>$id_docente, 'horario_id'=>$id_horario, 'aprobado'=>false]);
         //$reservas = Reserva::all(); 
 
         return view('reserva.matriz', compact('reserva'));
@@ -68,4 +68,13 @@ class ReservasController extends Controller
 
         return view('reserva.solicitudes', compact('reservas'));
     }
+
+    public function cambiarEstado(Reserva $reserva){
+        $reserva->aprobado = true;
+        $reserva->update();
+        $reservas = Reserva::all();
+
+        return view('reserva.solicitudes', compact('reservas'));
+    }
+
 }

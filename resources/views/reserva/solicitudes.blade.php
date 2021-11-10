@@ -13,6 +13,8 @@
 
   <div class="row row-cols-1 row-cols-md-3 g-4">
   @foreach($reservas as $reserva)
+  <form action="{{ route('aprobar', $reserva->id) }}" method="POST">
+                {{ csrf_field() }}
     <div class="col mt-4">
       <div class="card border-info bg-primary h-100">
         @if(!$reserva->local->images->isEmpty())
@@ -21,7 +23,7 @@
         <img src="..." class="card-img-top" alt="...">
         @endif
         <div class="card-body text-light">
-          <h5 class="card-title">Reserva</h5>
+          <h5 class="card-title">Reserva @if($reserva->aprobado)<span class="badge rounded-pill bg-success">Aprobado</span> @else <span class="badge rounded-pill bg-warning text-dark">Pendiente</span> @endif</h5>
           <p class="card-text"> 
 
 
@@ -62,11 +64,12 @@
 
           </p>
           
-          <a href="#" class="btn btn-success">Aprobar</a>
+          <button type="submit" class="btn btn-success mb-2">Aprobar</button>
 
         </div>
       </div>
     </div>
+    </form>
   @endforeach
   </div>
 </div>

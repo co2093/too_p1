@@ -5,7 +5,7 @@
 <div class="container-fluid">
 
     <div class="card">
-        <div class="card-header text-center">Solicitud de Resetva para {{$reserva->local->nombre}}</div>
+        <div class="card-header text-center">Solicitud de Reserva para {{$reserva->local->nombre}}</div>
         <div class="card-body">
 
 

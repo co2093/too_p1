@@ -45,6 +45,7 @@ Route::middleware('admin')->group(function(){
     Route::post('/horarios/local/', [App\Http\Controllers\ReservasController::class, 'horarios'])->name('horarios/local');
     Route::resource('locales/{local}/images', App\Http\Controllers\ImageController::class);
     Route::get('/listado', [App\Http\Controllers\ReservasController::class, 'listadoSolicitudes'])->name('listadoSolicitudes');
+    Route::post('/aprobar/{reserva}', [App\Http\Controllers\ReservasController::class, 'cambiarEstado'])->name('aprobar');
     
 }); 
 

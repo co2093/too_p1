@@ -19,6 +19,7 @@ class CreateReservasTable extends Migration
             $table->foreignId('materia_id');
             $table->foreignId('docente_id');
             $table->foreignId('horario_id');
+            $table->boolean('aprobado')->default(false);
             $table->timestamps();
         });
     }
