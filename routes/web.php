@@ -46,6 +46,7 @@ Route::middleware('admin')->group(function(){
     Route::resource('locales/{local}/images', App\Http\Controllers\ImageController::class);
     Route::get('/listado', [App\Http\Controllers\ReservasController::class, 'listadoSolicitudes'])->name('listadoSolicitudes');
     Route::post('/aprobar/{reserva}', [App\Http\Controllers\ReservasController::class, 'cambiarEstado'])->name('aprobar');
+    Route::post('/reservar/local/', [App\Http\Controllers\LocalController::class, 'reservar'])->name('reservar');
     
 }); 
 
@@ -53,6 +54,7 @@ Route::middleware('docente')->group(function(){
     Route::get('/menureserva', [App\Http\Controllers\ReservasController::class, 'index'])->name('menureserva');
     Route::post('/horarios/local/', [App\Http\Controllers\ReservasController::class, 'horarios'])->name('horarios/local');
     Route::post('/solicitudes', [App\Http\Controllers\ReservasController::class, 'solicitudesIndex'])->name('solicitudes');
-    
+    Route::get('/buscarlocal', [App\Http\Controllers\LocalController::class, 'buscar'])->name('buscarlocal');
+    Route::post('/reservar/local/', [App\Http\Controllers\LocalController::class, 'reservar'])->name('reservarlocal');
 });
 

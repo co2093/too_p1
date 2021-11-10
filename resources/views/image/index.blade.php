@@ -27,7 +27,7 @@
             @if(sizeof($images)>0)
                 @foreach($images as $image)
                     @if($image->local->id == $local->id)
-                    <a href="{{route('images.edit', [$local, $image])}}"><img src="/img/locales/{{$image->nombre}}"   alt="{{$image->nombre}}" width="150"></a>
+                    <a href="{{route('images.edit', [$local, $image])}}"><img src="{{asset('img/locales/'.$image->nombre)}}"   alt="{{$image->nombre}}" width="150"></a>
                     @endif
                 @endforeach
             @else

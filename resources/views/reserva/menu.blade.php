@@ -12,7 +12,7 @@
     
   <form action="{{ url('/horarios/local/') }}" method="POST" class="form-inline">
   {{ csrf_field() }}
-
+ 
   <div class="form-group mb-2">
     <label for="staticEmail2" class="sr-only">Locales</label>
     <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Lista de locales disponibles">

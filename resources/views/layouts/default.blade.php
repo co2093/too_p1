@@ -65,7 +65,7 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="buttons.html">Buscar</a>
+                        <a class="collapse-item" href="{{ route('buscarlocal') }}">Buscar</a>
                         <a class="collapse-item" href="cards.html">Calificar</a>
                     </div>
                 </div>
@@ -181,6 +181,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
+                        </li>
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -190,7 +191,8 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="{{asset('img/undraw_profile.svg')}}">
+                                <span class="d-none d-lg-block badge rounded-pill bg-success">{{ Auth::user()->rol->nombre }}</span>    
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

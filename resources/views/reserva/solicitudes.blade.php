@@ -18,44 +18,44 @@
     <div class="col mt-4">
       <div class="card border-info bg-primary h-100">
         @if(!$reserva->local->images->isEmpty())
-        <img src="/img/locales/{{$reserva->local->images[0]->nombre}}" class="card-img-top" alt="{{$reserva->local->images[0]->nombre}}">
+        <img src="{{asset('img/locales/'.$reserva->local->images[0]->nombre)}}" class="card-img-top" alt="{{$reserva->local->images[0]->nombre}}">
         @else
         <img src="..." class="card-img-top" alt="...">
         @endif
         <div class="card-body text-light">
-          <h5 class="card-title">Reserva @if($reserva->aprobado)<span class="badge rounded-pill bg-success">Aprobado</span> @else <span class="badge rounded-pill bg-warning text-dark">Pendiente</span> @endif</h5>
+          <h5 class="card-title">Reserva  @if($reserva->aprobado)<span class="badge rounded-pill bg-success">Aprobado</span> @else <span class="badge rounded-pill bg-warning">Pendiente</span> @endif </h5>
           <p class="card-text"> 
 
 
           <fieldset>
 
                 <div class="form-group row">
-                    <label class="col-md-3 form-control-label" for="name">Local</label>
-                    <div class="col-md-9">
+                    <label class="col-md-5 form-control-label" for="name">Local</label>
+                    <div class="col-md-7">
                         <input type="text" id="local" name="local" value="{{$reserva->local->nombre}}" class="form-control">
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-md-3 form-control-label" for="name">Materia</label>
-                    <div class="col-md-9">
+                    <label class="col-md-5 form-control-label" for="name">Materia</label>
+                    <div class="col-md-7">
                         <input type="text" id="materia" name="materia" value="{{$reserva->materia->nombre}}" class="form-control">
                     </div>
                 </div>
 
 
                 <div class="form-group row">
-                    <label class="col-md-3 form-control-label" for="name">Docente</label>
-                    <div class="col-md-9">
-                        <input type="text" id="materia" name="materia" value="{{$reserva->docente->user->name}}" class="form-control">
+                    <label class="col-md-5 form-control-label" for="name">Docente</label>
+                    <div class="col-md-7">
+                        <input type="text" id="docente" name="docente" value="{{$reserva->docente->user->name}}" class="form-control">
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-md-3 form-control-label" for="name">Horario</label>
-                    <div class="col-md-9">
-                        <input type="text" id="materia" name="materia" value="{{$reserva->horario->dia}}" class="form-control">
-                        <input type="text" id="materia" name="materia" value="{{$reserva->horario->hora}}" class="form-control">
+                    <label class="col-md-5 form-control-label" for="name">Horario</label>
+                    <div class="col-md-7">
+                        <input type="text" id="dia" name="dia" value="{{$reserva->horario->dia}}" class="form-control">
+                        <input type="text" id="hora" name="hora" value="{{$reserva->horario->hora}}" class="form-control">
                       </div>
 
                 </div>
@@ -63,9 +63,9 @@
             </fieldset>
 
           </p>
-          
-          <button type="submit" class="btn btn-success mb-2">Aprobar</button>
-
+          @if(!$reserva->aprobado)
+            <button type="submit" class="btn btn-success mb-2">Aprobar</button>
+          @endif
         </div>
       </div>
     </div>

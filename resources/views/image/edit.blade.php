@@ -6,7 +6,7 @@
     </p>
 </div>
 <div class="container">
-    <img src="/img/locales/{{$image->nombre}}" class="rounded mx-auto d-block" alt="{{$image->nombre}}" style="width: 250px;">
+    <img src="{{asset('img/locales/'.$image->nombre)}}" class="rounded mx-auto d-block" alt="{{$image->nombre}}" style="width: 250px;">
     <br>
     <form action="{{ route('images.destroy', [$local, $image]) }}" method="post">
         @csrf

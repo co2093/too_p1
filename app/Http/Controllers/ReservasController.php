@@ -23,7 +23,7 @@ class ReservasController extends Controller
         $id = $request->locale;
         $locale = Locale::findOrFail($id);
         $horarios = Horario::all();
-        $dias = [];
+        $dias = []; 
         $horas = [];
         foreach($horarios as $horario){
             if(!array_key_exists($horario->dia, $dias)){

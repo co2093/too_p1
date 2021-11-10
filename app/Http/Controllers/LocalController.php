@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Locale;
 use App\Models\Edificio;
+use App\Models\Horario;
+use App\Models\Materia;
 
 class LocalController extends Controller
 {
@@ -16,6 +18,33 @@ class LocalController extends Controller
     public function index()
     {
         return view('local.index', ['locales'=>Locale::all()]);
+    }
+ 
+    public function buscar()
+    {
+        return view('local.locales', ['locales'=>Locale::all()]);
+    }
+
+    public function reservar(Request $request)
+    {
+        $id = $request->locale;
+        $locale = Locale::findOrFail($id);
+        $horarios = Horario::all();
+        $dias = [];
+        $horas = [];
+        foreach($horarios as $horario){
+            if(!array_key_exists($horario->dia, $dias)){
+                $dias[$horario->dia] = $horario->dia;
+            }
+            if(!array_key_exists($horario->hora, $horas)){
+                $horas[$horario->hora] = $horario->hora;
+            }
+        }
+        $materias = Materia::all();
+      //  dd($id);
+
+
+        return view('reserva.horarios', compact(['locale', 'horas', 'dias', 'materias']));
     }
 
     /**
