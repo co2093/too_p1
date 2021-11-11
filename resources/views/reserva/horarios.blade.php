@@ -456,13 +456,13 @@
                  
                 </tr>
                 <tr>
-                    <th scope="row">11:35-1:15</th>
+                    <th scope="row">11:35-13:15</th>
 
                     @php
                     $l1 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "11:35-1:15")
+                    ->where('horarios.hora', "11:35-13:15")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Lunes")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -485,7 +485,7 @@
                     $l2 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "11:35-1:15")
+                    ->where('horarios.hora', "11:35-13:15")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Martes")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -508,7 +508,7 @@
                     $l3 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "11:35-1:15")
+                    ->where('horarios.hora', "11:35-13:15")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Miercoles")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -532,7 +532,7 @@
                     $l4 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "11:35-1:15")
+                    ->where('horarios.hora', "11:35-13:15")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Jueves")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -556,7 +556,7 @@
                     $l5 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "11:35-1:15")
+                    ->where('horarios.hora', "11:35-13:15")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Viernes")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -579,7 +579,7 @@
                     $l6 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "11:35-1:15")
+                    ->where('horarios.hora', "11:35-13:15")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Sabado")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -599,13 +599,13 @@
                  
                 </tr>
                 <tr>
-                    <th scope="row">1:20-3:00</th>
+                    <th scope="row">13:20-15:00</th>
 
                     @php
                     $l1 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "1:20-3:00")
+                    ->where('horarios.hora', "13:20-15:00")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Lunes")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -628,7 +628,7 @@
                     $l2 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "1:20-3:00")
+                    ->where('horarios.hora', "13:20-15:00")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Martes")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -651,7 +651,7 @@
                     $l3 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "1:20-3:00")
+                    ->where('horarios.hora', "13:20-15:00")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Miercoles")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -675,7 +675,7 @@
                     $l4 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "1:20-3:00")
+                    ->where('horarios.hora', "13:20-15:00")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Jueves")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -699,7 +699,7 @@
                     $l5 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "1:20-3:00")
+                    ->where('horarios.hora', "13:20-15:00")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Viernes")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -722,7 +722,7 @@
                     $l6 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "1:20-3:00")
+                    ->where('horarios.hora', "13:20-15:00")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Sabado")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -742,13 +742,13 @@
                  
                 </tr>
                 <tr>
-                    <th scope="row">3:05-4:45</th>
+                    <th scope="row">15:05-16:45</th>
 
                     @php
                     $l1 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "3:05-4:45")
+                    ->where('horarios.hora', "15:05-16:45")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Lunes")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -771,7 +771,7 @@
                     $l2 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "3:05-4:45")
+                    ->where('horarios.hora', "15:05-16:45")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Martes")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -794,7 +794,7 @@
                     $l3 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "3:05-4:45")
+                    ->where('horarios.hora', "15:05-16:45")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Miercoles")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -818,7 +818,7 @@
                     $l4 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "3:05-4:45")
+                    ->where('horarios.hora', "15:05-16:45")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Jueves")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -842,7 +842,7 @@
                     $l5 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "3:05-4:45")
+                    ->where('horarios.hora', "15:05-16:45")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Viernes")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -865,7 +865,7 @@
                     $l6 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "3:05-4:45")
+                    ->where('horarios.hora', "15:05-16:45")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Sabado")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -885,13 +885,13 @@
                  
                 </tr>
                 <tr>
-                    <th scope="row">4:50-6:30</th>
+                    <th scope="row">16:50-18:30</th>
 
                     @php
                     $l1 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "4:50-6:30")
+                    ->where('horarios.hora', "16:50-18:30")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Lunes")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -914,7 +914,7 @@
                     $l2 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "4:50-6:30")
+                    ->where('horarios.hora', "16:50-18:30")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Martes")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -937,7 +937,7 @@
                     $l3 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "4:50-6:30")
+                    ->where('horarios.hora', "16:50-18:30")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Miercoles")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -961,7 +961,7 @@
                     $l4 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "4:50-6:30")
+                    ->where('horarios.hora', "16:50-18:30")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Jueves")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -985,7 +985,7 @@
                     $l5 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "4:50-6:30")
+                    ->where('horarios.hora', "16:50-18:30")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Viernes")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -1008,7 +1008,7 @@
                     $l6 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "4:50-6:30")
+                    ->where('horarios.hora', "16:50-18:30")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Sabado")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -1028,13 +1028,13 @@
                  
                 </tr>
                 <tr>
-                    <th scope="row">6:35-8:15</th>
+                    <th scope="row">18:35-20:15</th>
 
                     @php
                     $l1 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "6:35-8:15")
+                    ->where('horarios.hora', "18:35-20:15")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Lunes")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -1057,7 +1057,7 @@
                     $l2 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "6:35-8:15")
+                    ->where('horarios.hora', "18:35-20:15")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Martes")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -1080,7 +1080,7 @@
                     $l3 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "6:35-8:15")
+                    ->where('horarios.hora', "18:35-20:15")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Miercoles")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -1104,7 +1104,7 @@
                     $l4 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "6:35-8:15")
+                    ->where('horarios.hora', "18:35-20:15")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Jueves")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -1128,7 +1128,7 @@
                     $l5 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "6:35-8:15")
+                    ->where('horarios.hora', "18:35-20:15")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Viernes")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
@@ -1151,7 +1151,7 @@
                     $l6 = DB::table('reservas')
                     ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
                     ->join('materias', 'reservas.materia_id', '=','materias.id')
-                    ->where('horarios.hora', "6:35-8:15")
+                    ->where('horarios.hora', "18:35-20:15")
                     ->where('reservas.local_id', $id)
                     ->where('horarios.dia', "Sabado")
                     ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
