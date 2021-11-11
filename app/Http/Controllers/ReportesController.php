@@ -46,9 +46,11 @@ class ReportesController extends Controller
 
         $porEscuela = DB::table('reservas')
         ->join('locales', 'reservas.local_id','=','locales.id')
-        ->join('edificios', 'locales.id', '=', 'edificios.id')
-        ->join('edificio_escuela', 'edificio_escuela.id', '=', 'edificios.id')
-        ->join('escuelas', 'escuelas.id', '=', 'edificio_escuela.escuela_id')
+        ->join('edificios', 'locales.edificio_id', '=', 'edificios.id')
+        //->join('edificio_escuela', 'edificio_escuela.edificio_id', '=', 'edificios.id')
+        ->join('materias', 'reservas.materia_id', '=','materias.id')
+        ->join('escuelas', 'escuelas.id', '=','materias.escuela_id')
+        //->join('escuelas', 'escuelas.id', '=', 'edificio_escuela.escuela_id')
         ->select('locales.nombre as localnombre', 'escuelas.nombre as escuela', DB::raw('count(*) as cantidad'))
         ->groupBy('escuelas.id', 'locales.id')
         ->get();
