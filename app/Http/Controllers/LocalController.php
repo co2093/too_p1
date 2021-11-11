@@ -22,7 +22,13 @@ class LocalController extends Controller
  
     public function buscar()
     {
-        return view('local.locales', ['locales'=>Locale::all()]);
+        return view('local.locales', ['locales'=>Locale::all(), 'edificios' => Edificio::all()]);
+    }
+
+    public function buscarPorEdificio(Request $request){
+        $edificio = Edificio::find($request->edificio);
+        $locales = $edificio->locales;
+        return view('local.locales', ['locales'=>$locales, 'edificios' => Edificio::all()]);
     }
 
     public function reservar(Request $request)

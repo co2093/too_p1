@@ -1,62 +1,51 @@
 @extends('layouts.default')
 @section('content')
-
+<form action="{{route('buscarLocal.edificio')}}" method="get">
+<div class="container">
+  <select class="form-select" aria-label="Default select example" name="edificio" style="width:40%;" required>
+    <option value="" selected>Buscar por edificio</option>
+    @foreach($edificios as $edificio)
+    <option value="{{$edificio->id}}">{{$edificio->nombre}}</option>
+    @endforeach
+  </select>&nbsp;&nbsp;
+  <input type="submit" class="btn btn-primary mb-2" value="Buscar">&nbsp;
+  <a href="{{route('buscarlocal')}}"><button type="button" class="btn btn-primary mb-2">Ver todos los locales</button></a>
+</div>
+</form>
+<br>
 <div class="container-fluid">
   <div class="row">
       <div class="col">
         <strong>Locales Disponibles para Reservar</strong> 
       </div>
   </div>
-
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <br>
   @foreach($locales as $local)
-  <form action="{{ url('/reservar/local/') }}" method="POST">
-                {{ csrf_field() }}
-    <div class="col mt-4">
-      <div class="card border-info bg-primary h-100">
+  <form action="{{route('horarios/local')}}" method="post">
+  @csrf
+  <input type="hidden" name="locale" value="{{$local->id}}">
+  <div class="card mb-3" style="width:100%;">
+    <div class="row g-0">
+      <div class="col-md-4">
         @if(!$local->images->isEmpty())
-        <img src="{{asset('img/locales/'.$local->images[0]->nombre)}}" class="card-img-top" alt="{{$local->images[0]->nombre}}">
+        <img src="{{asset('img/locales/'.$local->images[0]->nombre)}}" class="img-fluid rounded-start" alt="{{$local->images[0]->nombre}}">
         @else
-        <img src="..." class="card-img-top" alt="...">
+        <img src="..." class="img-fluid rounded-start" alt="...">
         @endif
-        <div class="card-body text-light">
-          <h5 class="card-title">Local: {{$local->nombre}}</h5>
-          <p class="card-text"> 
- 
-          <fieldset>
-
-                <input type="hidden" id="local_id" class="form-control" name="local_id" value="{{$local->id}}">
-
-                <div class="form-group row">
-                    <label class="col-md-5 form-control-label" for="ubicacion">Ubicación</label>
-                    <div class="col-md-7">
-                        <input type="text" id="ubicacion" name="ubicacion" value="{{$local->edificio->ubicacion}}" class="form-control" readonly>
-                    </div>
-                </div>
-
-
-                <div class="form-group row">
-                    <label class="col-md-5 form-control-label" for="edificio">Edificio</label>
-                    <div class="col-md-7">
-                        <input type="text" id="edificio" name="edificio" value="{{$local->edificio->nombre}}" class="form-control" readonly>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-md-5 form-control-label" for="planta">Planta No.</label>
-                    <div class="col-md-7">
-                        <input type="text" id="planta" name="planta" value="{{$local->planta}}" class="form-control" readonly>
-                    </div>
-                </div>
-            </fieldset>
-          </p>         
-          <button type="submit" class="btn btn-success mb-2">Reservar</button>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+        <span class="badge rounded-pill bg-success" style="color:white;">Disponible</span>
+          <h5 class="card-title">Nombre del local: {{$local->nombre}}</h5>
+          <p class="card-text">Edificio: {{$local->edificio->nombre}}</p>
+          <p class="card-text">Planta: {{$local->planta}}</p>
+          <input type="submit" class="btn btn-primary mb-2" value="Reservar este local">
         </div>
       </div>
     </div>
-    </form>
-  @endforeach
   </div>
+  </form>
+  @endforeach
 </div>
 
 @endsection

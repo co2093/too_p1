@@ -15,4 +15,8 @@ class Edificio extends Model
     {
         return $this->belongsToMany('App\Models\Escuela');
     }
+    public function locales()
+    {
+        return $this->hasMany('App\Models\Locale');
+    }
 }

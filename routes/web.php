@@ -47,6 +47,8 @@ Route::middleware('admin')->group(function(){
     Route::get('/listado', [App\Http\Controllers\ReservasController::class, 'listadoSolicitudes'])->name('listadoSolicitudes');
     Route::post('/aprobar/{reserva}', [App\Http\Controllers\ReservasController::class, 'cambiarEstado'])->name('aprobar');
     Route::post('/reservar/local/', [App\Http\Controllers\LocalController::class, 'reservar'])->name('reservar');
+    Route::get('/buscarlocal', [App\Http\Controllers\LocalController::class, 'buscar'])->name('buscarlocal');
+    Route::get('/buscarlocal/edificio', [App\Http\Controllers\LocalController::class, 'buscarPorEdificio'])->name('buscarLocal.edificio');
     
 }); 
 
@@ -55,6 +57,7 @@ Route::middleware('docente')->group(function(){
     Route::post('/horarios/local/', [App\Http\Controllers\ReservasController::class, 'horarios'])->name('horarios/local');
     Route::post('/solicitudes', [App\Http\Controllers\ReservasController::class, 'solicitudesIndex'])->name('solicitudes');
     Route::get('/buscarlocal', [App\Http\Controllers\LocalController::class, 'buscar'])->name('buscarlocal');
+    Route::get('/buscarlocal/edificio', [App\Http\Controllers\LocalController::class, 'buscarPorEdificio'])->name('buscarLocal.edificio');
     Route::post('/reservar/local/', [App\Http\Controllers\LocalController::class, 'reservar'])->name('reservarlocal');
 });
 
