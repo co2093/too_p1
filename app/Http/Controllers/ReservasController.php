@@ -25,6 +25,7 @@ class ReservasController extends Controller
         $horarios = Horario::all();
         $dias = []; 
         $horas = [];
+
         foreach($horarios as $horario){
             if(!array_key_exists($horario->dia, $dias)){
                 $dias[$horario->dia] = $horario->dia;
@@ -34,10 +35,11 @@ class ReservasController extends Controller
             }
         }
         $materias = Materia::all();
-      //  dd($id);
+    
+        $dias = array("Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado");
+       
 
-
-        return view('reserva.horarios', compact(['locale', 'horas', 'dias', 'materias']));
+        return view('reserva.horarios', compact(['locale', 'horas', 'dias', 'materias', 'horarios', 'dias', 'id']));
     }
 
     public function solicitudesIndex(Request $request){

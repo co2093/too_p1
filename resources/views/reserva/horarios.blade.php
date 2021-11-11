@@ -13,47 +13,1161 @@
             <thead>
                 <tr>
                     <th class="table-primary" scope="col">Horario</th>
-                    <th class="table-primary" scope="col">Lunes</th>
-                    <th class="table-primary" scope="col">Martes</th>
-                    <th class="table-primary" scope="col">Miercoles</th>
-                    <th class="table-primary" scope="col">Jueves</th>
-                    <th class="table-primary" scope="col">Viernes</th>
-                    <th class="table-primary" scope="col">Sabado</th>
+                    @foreach($dias as $d)
+                    <th class="table-primary" scope="col">{{$d}}</th>    
+                    @endforeach
                 </tr>
         
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">6:20-8:00</th>
+                    <th scope="row">6:20-8:00</th>                   
+                    @php
+                    $l1 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "6:20-8:00")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Lunes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp        
+                    @if($l1)              
+                    <th scope="row">{{$l1->materianombre}}<br>
+                    @if($l1->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+                    
+
+                    @php
+                    $l2 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "6:20-8:00")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Martes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l2)
+                    <th scope="row">{{$l2->materianombre}}<br>
+                    @if($l2->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif       
+
+
+                    @php
+                    $l3 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "6:20-8:00")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Miercoles")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l3)
+                    <th scope="row">{{$l3->materianombre}}<br>
+                    @if($l3->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+
+                    @php
+                    $l4 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "6:20-8:00")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Jueves")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l4)
+                    <th scope="row">{{$l4->materianombre}}<br>
+                    @if($l4->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+
+                    @php
+                    $l5 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "6:20-8:00")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Viernes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l5)
+                    <th scope="row">{{$l5->materianombre}}<br>
+                    @if($l5->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+                    @php
+                    $l6 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "6:20-8:00")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Sabado")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l6)
+                    <th scope="row">{{$l6->materianombre}}<br>
+                    @if($l2->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+                    
+                    
+
+
 
                 </tr>
                 
                 <tr>
                     <th scope="row">8:08-9:45</th>
-       
+
+                    @php
+                    $l1 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "8:08-9:45")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Lunes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp        
+                    @if($l1)              
+                    <th scope="row">{{$l1->materianombre}}<br>
+                    @if($l1->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+                    
+
+                    @php
+                    $l2 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "8:08-9:45")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Martes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l2)
+                    <th scope="row">{{$l2->materianombre}}<br>
+                    @if($l2->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif       
+
+
+                    @php
+                    $l3 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "8:08-9:45")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Miercoles")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l3)
+                    <th scope="row">{{$l3->materianombre}}<br>
+                    @if($l3->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+
+                    @php
+                    $l4 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "8:08-9:45")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Jueves")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l4)
+                    <th scope="row">{{$l4->materianombre}}<br>
+                    @if($l4->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+
+                    @php
+                    $l5 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "8:08-9:45")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Viernes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l5)
+                    <th scope="row">{{$l5->materianombre}}<br>
+                    @if($l5->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+                    @php
+                    $l6 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "8:08-9:45")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Sabado")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l6)
+                    <th scope="row">{{$l6->materianombre}}<br>
+                    @if($l2->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
                 </tr>
                 <tr>
                     <th scope="row">9:50-11:30</th>
+
+
+                    @php
+                    $l1 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "9:50-11:30")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Lunes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp        
+                    @if($l1)              
+                    <th scope="row">{{$l1->materianombre}}<br>
+                    @if($l1->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+                    
+
+                    @php
+                    $l2 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "9:50-11:30")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Martes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l2)
+                    <th scope="row">{{$l2->materianombre}}<br>
+                    @if($l2->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif       
+
+
+                    @php
+                    $l3 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "9:50-11:30")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Miercoles")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l3)
+                    <th scope="row">{{$l3->materianombre}}<br>
+                    @if($l3->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+
+                    @php
+                    $l4 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "9:50-11:30")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Jueves")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l4)
+                    <th scope="row">{{$l4->materianombre}}<br>
+                    @if($l4->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+
+                    @php
+                    $l5 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "9:50-11:30")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Viernes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l5)
+                    <th scope="row">{{$l5->materianombre}}<br>
+                    @if($l5->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+                    @php
+                    $l6 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "9:50-11:30")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Sabado")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l6)
+                    <th scope="row">{{$l6->materianombre}}<br>
+                    @if($l2->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
                  
                 </tr>
                 <tr>
                     <th scope="row">11:35-1:15</th>
+
+                    @php
+                    $l1 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "11:35-1:15")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Lunes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp        
+                    @if($l1)              
+                    <th scope="row">{{$l1->materianombre}}<br>
+                    @if($l1->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+                    
+
+                    @php
+                    $l2 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "11:35-1:15")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Martes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l2)
+                    <th scope="row">{{$l2->materianombre}}<br>
+                    @if($l2->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif       
+
+
+                    @php
+                    $l3 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "11:35-1:15")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Miercoles")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l3)
+                    <th scope="row">{{$l3->materianombre}}<br>
+                    @if($l3->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+
+                    @php
+                    $l4 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "11:35-1:15")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Jueves")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l4)
+                    <th scope="row">{{$l4->materianombre}}<br>
+                    @if($l4->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+
+                    @php
+                    $l5 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "11:35-1:15")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Viernes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l5)
+                    <th scope="row">{{$l5->materianombre}}<br>
+                    @if($l5->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+                    @php
+                    $l6 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "11:35-1:15")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Sabado")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l6)
+                    <th scope="row">{{$l6->materianombre}}<br>
+                    @if($l2->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
                  
                 </tr>
                 <tr>
                     <th scope="row">1:20-3:00</th>
+
+                    @php
+                    $l1 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "1:20-3:00")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Lunes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp        
+                    @if($l1)              
+                    <th scope="row">{{$l1->materianombre}}<br>
+                    @if($l1->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+                    
+
+                    @php
+                    $l2 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "1:20-3:00")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Martes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l2)
+                    <th scope="row">{{$l2->materianombre}}<br>
+                    @if($l2->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif       
+
+
+                    @php
+                    $l3 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "1:20-3:00")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Miercoles")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l3)
+                    <th scope="row">{{$l3->materianombre}}<br>
+                    @if($l3->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+
+                    @php
+                    $l4 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "1:20-3:00")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Jueves")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l4)
+                    <th scope="row">{{$l4->materianombre}}<br>
+                    @if($l4->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+
+                    @php
+                    $l5 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "1:20-3:00")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Viernes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l5)
+                    <th scope="row">{{$l5->materianombre}}<br>
+                    @if($l5->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+                    @php
+                    $l6 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "1:20-3:00")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Sabado")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l6)
+                    <th scope="row">{{$l6->materianombre}}<br>
+                    @if($l2->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
                  
                 </tr>
                 <tr>
                     <th scope="row">3:05-4:45</th>
+
+                    @php
+                    $l1 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "3:05-4:45")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Lunes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp        
+                    @if($l1)              
+                    <th scope="row">{{$l1->materianombre}}<br>
+                    @if($l1->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+                    
+
+                    @php
+                    $l2 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "3:05-4:45")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Martes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l2)
+                    <th scope="row">{{$l2->materianombre}}<br>
+                    @if($l2->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif       
+
+
+                    @php
+                    $l3 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "3:05-4:45")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Miercoles")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l3)
+                    <th scope="row">{{$l3->materianombre}}<br>
+                    @if($l3->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+
+                    @php
+                    $l4 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "3:05-4:45")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Jueves")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l4)
+                    <th scope="row">{{$l4->materianombre}}<br>
+                    @if($l4->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+
+                    @php
+                    $l5 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "3:05-4:45")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Viernes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l5)
+                    <th scope="row">{{$l5->materianombre}}<br>
+                    @if($l5->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+                    @php
+                    $l6 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "3:05-4:45")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Sabado")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l6)
+                    <th scope="row">{{$l6->materianombre}}<br>
+                    @if($l2->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
                  
                 </tr>
                 <tr>
                     <th scope="row">4:50-6:30</th>
+
+                    @php
+                    $l1 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "4:50-6:30")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Lunes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp        
+                    @if($l1)              
+                    <th scope="row">{{$l1->materianombre}}<br>
+                    @if($l1->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+                    
+
+                    @php
+                    $l2 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "4:50-6:30")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Martes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l2)
+                    <th scope="row">{{$l2->materianombre}}<br>
+                    @if($l2->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif       
+
+
+                    @php
+                    $l3 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "4:50-6:30")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Miercoles")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l3)
+                    <th scope="row">{{$l3->materianombre}}<br>
+                    @if($l3->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+
+                    @php
+                    $l4 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "4:50-6:30")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Jueves")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l4)
+                    <th scope="row">{{$l4->materianombre}}<br>
+                    @if($l4->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+
+                    @php
+                    $l5 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "4:50-6:30")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Viernes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l5)
+                    <th scope="row">{{$l5->materianombre}}<br>
+                    @if($l5->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+                    @php
+                    $l6 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "4:50-6:30")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Sabado")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l6)
+                    <th scope="row">{{$l6->materianombre}}<br>
+                    @if($l2->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
                  
                 </tr>
                 <tr>
                     <th scope="row">6:35-8:15</th>
+
+                    @php
+                    $l1 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "6:35-8:15")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Lunes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp        
+                    @if($l1)              
+                    <th scope="row">{{$l1->materianombre}}<br>
+                    @if($l1->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+                    
+
+                    @php
+                    $l2 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "6:35-8:15")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Martes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l2)
+                    <th scope="row">{{$l2->materianombre}}<br>
+                    @if($l2->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif       
+
+
+                    @php
+                    $l3 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "6:35-8:15")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Miercoles")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l3)
+                    <th scope="row">{{$l3->materianombre}}<br>
+                    @if($l3->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+
+                    @php
+                    $l4 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "6:35-8:15")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Jueves")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l4)
+                    <th scope="row">{{$l4->materianombre}}<br>
+                    @if($l4->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+
+                    @php
+                    $l5 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "6:35-8:15")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Viernes")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l5)
+                    <th scope="row">{{$l5->materianombre}}<br>
+                    @if($l5->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
+
+
+                    @php
+                    $l6 = DB::table('reservas')
+                    ->join('horarios', 'reservas.horario_id', '=', 'horarios.id')
+                    ->join('materias', 'reservas.materia_id', '=','materias.id')
+                    ->where('horarios.hora', "6:35-8:15")
+                    ->where('reservas.local_id', $id)
+                    ->where('horarios.dia', "Sabado")
+                    ->select('materias.nombre as materianombre', 'reservas.aprobado as estado')
+                    ->first();
+                    @endphp
+                    @if($l6)
+                    <th scope="row">{{$l6->materianombre}}<br>
+                    @if($l2->estado==1)
+                        Aprobado
+                    @else
+                        No Aprobado
+                    @endif
+                    </th>
+                    @else
+                    <th scope="row">Disponible</th>    
+                    @endif 
                  
                 </tr>
             </tbody>
